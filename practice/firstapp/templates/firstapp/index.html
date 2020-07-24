@@ -1,0 +1,19 @@
+ {% load static %} # static 사용
+ <html>
+   <head>
+       <meta charset="utf-8">     
+       <title>first template</title>
+   </head>
+ 
+   <body>
+     Hello world!
+     <p>{{ current_date }}</p>
+     <p>{{ current_date|date:"Y년 m월 d일 H시 i분 s초" }}</p>
+     <img src ="{% static 'firstapp/image.jpg'%}" alt='nugget'/> # static 이미지 삽입
+     <a href="{% url 'select' %}">select로 이동하기</a>
+
+     <a href="/select">시작하기!</a>
+     <a href="{% url 'select' %}">시작하기!</a>
+   </body>
+  
+ </html>

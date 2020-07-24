@@ -1,0 +1,22 @@
+# blogProject/blog/templates/new.html
+
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</header>
+
+<body>
+    {% comment %} 부트스트랩을 활용하여 손쉽게 만들기 {% endcomment %}
+    <div class="container">
+        <form action="{% url 'create' %}"> 
+            <h4>제목: </h4>
+            <input type="text" name="title">
+            <br>
+
+            <h4>본문: </h4>
+            <textarea cols=40 rows=10 name="body"></textarea>
+            <br>
+
+            <input class="btn btn-dark" type="submit" value="제출하기">
+        </form>
+    </div>
+</body>

@@ -1,0 +1,10 @@
+{%extends 'accounts/main.html'%}
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    
+    <input type="submit" name="바꿔라">
+</form>
+
+{% endblock %}

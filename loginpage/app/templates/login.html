@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,500i,700,800i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <title>Login Page</title>
+    <style>
+        .nav{
+            position: fixed;
+            top:0;
+        }
+        .form-check{
+            padding-bottom : 10px;
+        } 
+        .login{
+            padding-top: 10px;
+        }
+       .a{
+           padding-top :10px;
+       }
+       .b{
+        padding-top :10px;   
+       }    
+    </style>
+</head>
+<body>
+    <!--navebar-->
+        <nav class="navbar navbar-fixed-top navbar-expand-sm navbar-light bg-light ">
+            <div id="header" class="header"></div>
+              <div class="inner">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="row d-flex justify-content-between">
+                    <div class="ml-5"><h2>Logo</h1></div>
+                        <div class="mr-5">
+                            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                                <div class="d-flex justify-content-end ">
+                                    <div class="menu">
+                                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right ">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">서비스</a>
+                                        </li>
+                        
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">로그인</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">회원가입</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">도움말</a>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div> 
+            </div> 
+        </nav> 
+
+    <!-- 회원가입 입력 부분-->
+    <div class = "container-fluid row">
+        <div class="col-4"></div>
+
+        <div class="col-4">
+            <h3 style="text-align: center;">회원가입</h3>
+            <form action="" method="GET">
+           
+                <div class="form-group">
+                  <input type="text" class="form-control" id="InputName" name="text" placeholder="이름 입력해주세요">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="InputEmail" name="email" placeholder="이메일 입력해주세요">
+                  </div>
+                <div class="form-group">
+                    <input type="password1" class="form-control" id="inputPassword1" name="password1" placeholder="1차 비밀번호 입력해주세요">
+                </div>
+                <div class="form-group">
+                    <input type="password2" class="form-control" id="inputPassword2" name="password2" placeholder="2차 비밀번호 입력해주세요">
+                </div>
+                <div class="checkbox1">
+                  <label><input type="checkbox" > 서비스에 대한 소식을 이메일로 받아봅니다.</label>
+                </div>
+                <div class="checkbox2">
+                    <label><input type="checkbox"> 서비스 약관에 동의합니다.</label>
+                </div>
+                <input type="submit" class="btn btn-primary btn-lg btn-block mt-4 pt-2" value="가입하기">
+              </form>
+               
+            <div class="row">
+                <div class="login">
+                     <h4>다른 서비스 계정으로 가입</h4>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col">
+                    <div class="a">
+                        <a href="http://www.facebook.com" class="fa fa-facebook"></a>
+                        <a href="http://www.twitter.com" class="fa fa-twitter"></a>
+                    </div>  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="b">
+                        <a href="http://www.google.com" class="fa fa-google"></a>
+                        <a href="http://www.facebook.com" class="fa fa-snapchat-ghost"></a>
+                    </div>  
+                </div> 
+            </div><hr>
+            <div>
+                <p>이미 가입하셨다면?<b><a href="login.html">로그인</a></b></p>
+            </div>
+        </div>
+        <div class="col-4"></div>       
+    </div>    
+</body>
+</html>

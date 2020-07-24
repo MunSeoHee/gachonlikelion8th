@@ -1,0 +1,7 @@
+
+
+{% for i in blogs.all %} 
+    <a href="/detail/{{i,id}}">{{i.title}}</a><br>
+{{%endfor%}}
+
+<a href="{%url 'create'%}">글작성하기 </a>

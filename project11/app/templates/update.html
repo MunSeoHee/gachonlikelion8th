@@ -1,0 +1,9 @@
+<h1>게시글 작성</h1>
+
+
+<form action="/update/{{blog.id}}" method="get">
+    <input type="text" name="title" value="{{blog.title}}">
+    <textarea name="body">{{blog.body}}</textarea> # value 위치 조심
+    <input type="number" name="like" value="{{blog.likes}}">
+    <input type="submit"> #제출하기
+</form>

@@ -1,0 +1,17 @@
+
+
+<!--{% for i in users.all %} 
+    {{i.email}}<br>
+    {{i.pw}}<br>
+    {{i.name}}<br>
+    {{i.gender}}<br>
+    {{i.age}}<br>
+{{%endfor%}} -->
+
+
+
+{% for i in users.all %} 
+    <a href="/detail/{{i,id}}">{{i.title}}</a><br>
+{{%endfor%}}
+
+<a href="{%url 'create'%}">글작성하기 </a>

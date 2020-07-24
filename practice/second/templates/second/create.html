@@ -1,0 +1,20 @@
+
+<form action="{% url 'create' %}" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <button type="submit">제출</button>
+</form>
+
+
+
+
+
+<form action="{% url ‘confirm’ %} " method="post">
+    {% csrf_token %} # csrf_token = form으로 입력받는 정보에 발행되는 토큰
+    {{ form }}
+    <button type="submit">제출</button>
+</form>
+
+# create에서 client로부터 form data를 입력받고 post방식으로 create에게 넘긴다.

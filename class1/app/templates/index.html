@@ -1,0 +1,7 @@
+{% for sample in samples.all %}
+    <a href="/detail/{{sample.id}}"> {{sample.title}}</a><br> 
+  
+
+{%endfor%}
+
+<a href="{% url 'new'%}"> 글 작성 </a>
