@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글</title>
+</head>
+<body>
+    <input type="button" onclick="location.href = 'makeboard' " value="글쓰기"><br><br>
+    <div class="container">
+        {%for board in post %}
+        <form action="deleteboard">
+        <table border="1">
+            <tr>
+                <td>
+                    {{board.name}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{board.memo}}
+                </td>
+            </tr>
+                <input type="text" value="{{board.date}}" name=date  style=display:none>
+        </table>
+        <input type="submit" value="지우기">
+        <br><br>
+        {%endfor%}
+        </form>
+
+    </div>
+    {% if post.has_previous %}
+        <a href="?page=1">처음으로</a>
+        <a href="?page={{post.previous_page_unmber}}">이전으로</a>
+    {%endif%}
+        <span>{{post.number}}</span>
+        <span>/</span>
+        <span>{{post.pagenator.num_pages}}</span>
+
+    {%if post.has_next %}
+        <a href="?page={{post.next_page_number}}">다음으로</a>
+        <a href="?page={{post.paginator.num_pages}}">끝으로</a>
+    {%endif%}
+    <br><br><br>
+    <button onclick="location.href = 'home' ">돌아가기</button>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글작성</title>
+</head>
+<body>
+    <form action="createboard" method="POST">
+        {% csrf_token %}
+        제목입력 <input type="text" name="name"><br>
+        내용입력 <input type="text" name="memo"><br>
+        <input type = "submit" value="확인">
+    </form>
+</body>
+</html>

@@ -3,8 +3,54 @@ from django.http import HttpResponse
 # Create your views here.
 from django.forms import inlineformset_factory # 한번에 여러개 입력받기
 from .models import *
-from .forms import OrderForm
+from .forms import OrderForm, CreateUserForm
+from django.contrib.auth.forms import UserCreationForm
 
+from django.contrib  import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
+from .decorator import unauthenticated_user,allowed_users
+
+
+from .filters import OrderFilter
+
+@unauthenticated_user
+def registerPage(request):
+	form = CreateUserForm()
+	if request.method == 'POST':
+		form = CreateUserForm(request.POST)
+		if form.is_valid():
+			form.save()
+			user = form.cleaned_data.get('username')
+			messages.success(request, '계정이 생성되었습니다.' + user)
+			return redirect('login')
+	context = {'form':form}
+	return render(request, 'accounts/register.html', context)
+
+@unauthenticated_user
+def loginPage(request):
+		if request.method == 'POST':
+			username = request.POST.get('username')
+			password =request.POST.get('password')
+
+			user = authenticate(request, username=username, password=password)
+
+			if user is not None:
+				login(request, user)
+				return redirect('home')
+			else:
+				messages.info(request, 'Username OR password is incorrect')
+
+		context = {}
+		return render(request, 'accounts/login.html', context)
+		
+def logoutUser(request):
+	logout(request)
+	return redirect('login')
+
+@login_required(login_url='login') # 첫번쨰 함수 적용
+@allowed_users(allowed_roles=['admin'])# 두번쨰 함수 적용
 def home(request):
 	orders = Order.objects.all()
 	customers = Customer.objects.all()
@@ -21,21 +67,30 @@ def home(request):
 
 	return render(request, 'accounts/dashboard.html', context)
 
+@login_required(login_url='login')
 def products(request):
 	products = Product.objects.all()
 
 	return render(request, 'accounts/products.html', {'products':products})
 
-
+@login_required(login_url='login')
 def customer(request, pk_test):
 	customer = Customer.objects.get(id=pk_test)
 
 	orders = customer.order_set.all()
 	order_count = orders.count()
 
-	context = {'customer':customer, 'orders':orders, 'order_count':order_count}
+	orders = customer.order_set.all()
+	order_count = orders.count()
+
+	myFilter = OrderFilter(request.GET, queryset=orders)
+	orders = myFilter.qs
+
+	context = {'customer':customer, 'orders':orders, 
+	'order_count':order_count, 'myFilter':myFilter}
 	return render(request, 'accounts/customer.html',context)
 
+@login_required(login_url='login')
 def createOrder(request, pk):
 	OrderFormSet = inlineformset_factory(Customer, Order,fields=('product','status'), extra=10) #부모 모델, 자식모델
 	customer = Customer.objects.get(id=pk)
@@ -52,6 +107,7 @@ def createOrder(request, pk):
 	context= {'formset':formset}
 	return render(request, 'accounts/order_form.html',context)
 
+@login_required(login_url='login')
 def updateOrder(request, pk):
 
 	order = Order.objects.get(id=pk)
@@ -66,6 +122,7 @@ def updateOrder(request, pk):
 	context = {'form':form}
 	return render(request, 'accounts/order_form.html', context)
 
+@login_required(login_url='login')
 def deleteOrder(request, pk):
 	order = Order.objects.get(id=pk)
 	if request.method == "POST":
@@ -74,3 +131,7 @@ def deleteOrder(request, pk):
 
 	context = {'item':order}
 	return render(request, 'accounts/delete.html', context)
+
+def userPage(request):
+	context = {}
+	return render(request, 'accounts/user.html', context)

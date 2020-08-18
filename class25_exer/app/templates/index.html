@@ -1,0 +1,10 @@
+<h1>안녕</h1>
+
+
+{%for i in arr.all %}
+    {{i.product}}
+    {{i.price}}
+{% endfor %}
+
+
+<a href="{%url 'new'%}">글작성</a>

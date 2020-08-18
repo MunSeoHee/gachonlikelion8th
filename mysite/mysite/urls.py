@@ -13,13 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-#mysite/mysite/urls.py
 from django.contrib import admin
-from django.urls import include, path
-#django.urls.include를 import
+from django.urls import path
+from myapp import views
 
 urlpatterns = [
-	#urlpatterns 리스트에 include() 함수 추가
-    path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
+    path('',views.index),
+    path('regist',views.regist),
+    path('sign_up',views.sign_up),
+    path('sign_in',views.sign_in),
+    path('home',views.home),
+    path('logout',views.logout),
+    path('makeboard',views.make_board),
+    path('createboard',views.create_board),
+    path('myboard',views.myboard),
+    path('deleteboard',views.delete_board),
+
 ]

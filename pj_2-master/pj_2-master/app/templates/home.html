@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        .detail{
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <form action="{%url 'get'%}" method="GET">
+        <div class="form-group container irdnt_nm">
+            <input class="form-control" type="text" name = "irdnt_nm" placeholder="재료들을 입력해주세요">
+        </div>
+        <div class="form-group container detail">
+            <select class="form-control" name="nation_nm">
+              <option value selected disabled>유형분류</option>
+              <option>한식</option>
+              <option>일본</option>
+              <option>중국</option>
+              <option>서양</option>
+              <option>퓨전</option>
+              <option>이탈리아</option>
+              <option>동남아시아</option>
+            </select>
+            <select  class="form-control" name="level_nm">
+              <option value selected disabled>난이도</option>
+              <option>초보환영</option>
+              <option>보통</option>
+              <option>어려움</option>
+            </select>
+            <input class="form-control" type="text" name = "calorie" placeholder="칼로리">
+            <select class="form-control" name="cooking_time">
+                <option value selected disabled>조리시간</option>
+                <option>10분 이하</option>
+                <option>20분 이하</option>
+                <option>30분 이하</option>
+                <option>60분 이하</option>
+                <option>90분 이하</option>
+              </select>
+            <button type="submit" class="btn btn-primary" style="width: 150px; margin-left:10px"><i class="fas fa-search"></i></button>
+          </div>
+    </form>
+    <div class="container productlist">
+      이름:<br>
+      {%for i in recipeName%}
+        {{i}}
+      {%endfor%}
+      유형분류: <br>
+      {%for i in type%}
+          {{i}}
+      {%endfor%}
+      이미지: <br>
+      {%for i in menuImage%}
+          <img src="{{i}}" alt="">
+      {%endfor%}
+    </div>
+</body>
+</html>

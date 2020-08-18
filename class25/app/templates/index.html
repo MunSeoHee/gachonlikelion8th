@@ -1,0 +1,13 @@
+<h1>Hello</h1>
+<!-- {{x.product}}
+{{x.price}}
+{{x.date}}
+{{x.id}} -->
+
+
+
+{% for i in arr.all %}
+    <a href="/{{i.id}}">{{i.product}}</a>
+{% endfor %}
+
+<a href="{% url 'new'%}">글 작성</a> 
